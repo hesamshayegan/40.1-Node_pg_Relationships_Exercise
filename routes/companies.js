@@ -17,7 +17,7 @@ let router = express.Router();
 
 router.get('/', async (req, res, next) => {
     try {
-      const result = await db.query('SELECT * FROM companies');
+      const result = await db.query('SELECT * FROM companies ORDER BY name');
       return res.json({ "companies": result.rows })
     } catch (e) {
       return next(e);

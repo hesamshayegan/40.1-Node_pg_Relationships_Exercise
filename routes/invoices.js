@@ -103,7 +103,10 @@ router.put("/:id", async function (req, res, next) {
         }
 
     const currPaidDate = currResult.rows[0].paid_date;
-
+    
+    // If paying unpaid invoice: sets paid_date to today
+    //If un-paying: sets paid_date to null
+    // Else: keep current paid_date
     if (!currPaidDate && paid) {
         paidDate = new Date();
     } else if (!paid) {
